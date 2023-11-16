@@ -59,12 +59,12 @@ export const login = async (req, res, next) => {
 
     // hard to do email verification using nodemailer>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-    // if (!user?.verified) {
-    //   next(
-    //     "User email is not verified. Check your email account and verify your email"
-    //   );
-    //   return;
-    // }
+    if (!user?.verified) {
+      next(
+        "User email is not verified. Check your email account and verify your email"
+      );
+      return;
+    }
 
     // compare password
     const isMatch = await compareString(password, user?.password);
