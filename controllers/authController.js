@@ -1,5 +1,5 @@
 import Users from "../models/userModel.js";
-import {  createJWT, hashString } from "../utilities/sendEmail.js";
+import { compareString, createJWT, hashString } from "../utilities/index.js";
 import { sendVerificationEmail } from "../utilities/sendEmail.js";
 
 export const register = async (req, res, next) => {
@@ -57,12 +57,14 @@ export const login = async (req, res, next) => {
       return;
     }
 
-    if (!user?.verified) {
-      next(
-        "User email is not verified. Check your email account and verify your email"
-      );
-      return;
-    }
+    // hard to do email verification using nodemailer>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    // if (!user?.verified) {
+    //   next(
+    //     "User email is not verified. Check your email account and verify your email"
+    //   );
+    //   return;
+    // }
 
     // compare password
     const isMatch = await compareString(password, user?.password);
