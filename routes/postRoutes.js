@@ -15,7 +15,7 @@ import {
 
 const router = express.Router();
 
-// crete post
+// create post
 router.post("/create-post", userAuth, createPost);
 // get posts
 router.post("/", userAuth, getPosts);
